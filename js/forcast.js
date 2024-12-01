@@ -1,29 +1,24 @@
 let key = 'r48SckXJwGhYtVPAWnNELqusNTcX5EIs';
 
+let getWeather = async (id) => {
+  let base = `https://dataservice.accuweather.com/currentconditions/v1/${id}`;
+  let query = `?apikey=${key}`;
 
-let getWeather = async(id)=>{
+  let response = await fetch(base + query);
+  let data = await response.json();
 
-      let base = `http://dataservice.accuweather.com/currentconditions/v1/${id}`
-      let query = `?apikey=${key}`;
+  return data[0];
+};
 
-      let response = await fetch(base + query);
-      let data = await response.json();
+let getCity = async (city) => {
+  let base = 'https://dataservice.accuweather.com/locations/v1/cities/search';
+  let query = `?apikey=${key}&q=${city}`;
 
-      return data[0];
-}
+  let response = await fetch(base + query);
+  let data = await response.json();
 
-
-let getCity = async (city)=>{
-let base = 'http://dataservice.accuweather.com/locations/v1/cities/search';
-let query = `?apikey=${key}&q=${city}`;
-
-let response = await fetch(base + query);
-let data = await response.json();
-
-return data[0];
-
-
-}
+  return data[0];
+};
 
 // getCity('london').then(data=>{
 //       return getWeather(data.Key);
@@ -35,10 +30,3 @@ return data[0];
 // })
 
 // getWeather("328328");
-
-
-
-
-
-
-
