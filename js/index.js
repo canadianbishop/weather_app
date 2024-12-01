@@ -29,8 +29,8 @@ let updateWeather = (data) => {
   icon.setAttribute('src', iconsrc);
 
   let weatherResult = weather.IsDayTime
-    ? img.setAttribute('src', '/img/day.svg')
-    : img.setAttribute('src', '/img/night.svg');
+    ? img.setAttribute('src', '../img/day.svg')
+    : img.setAttribute('src', '../img/night.svg');
 
   // remove display none on card remove it
 
