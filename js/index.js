@@ -1,22 +1,17 @@
 let form = document.querySelector('form');
 let details = document.querySelector('.details');
 let card = document.querySelector('.card');
-let img = document.querySelector('.time');
-let icon = document.querySelector('.icon img');
+let img = document.getElementById('img');
+let icon = document.getElementById('iconImg');
 
 let updateWeather = (data) => {
-  // let weather = data.weather
-  // let cityDets = data.cityDets;
-
-  // console.log(cityDets,weather)
-
   // destructiring
 
   const { cityDets, weather } = data;
 
   // update html
 
-  details.innerHTML = `  <h5 class="my-3 ${weather.IsDayTime ? 'text-black' : 'text-white'}">${cityDets.EnglishName}, ${cityDets.Country.EnglishName}</h5>
+  details.innerHTML = `  <h5 class="my-3 text-black">${cityDets.EnglishName}, ${cityDets.Country.EnglishName}</h5>
                   <div class="my-3">${weather.WeatherText}</div>
                   <div class="display-4 my-4">
                         <span>${weather.Temperature.Metric.Value}</span>
@@ -25,7 +20,7 @@ let updateWeather = (data) => {
 
   // update img and icons
 
-  const iconsrc = `/weather/img/icons/${weather.WeatherIcon}.svg`;
+  const iconsrc = `/img/icons/${weather.WeatherIcon}.svg`;
   icon.setAttribute('src', iconsrc);
 
   let weatherResult = weather.IsDayTime
